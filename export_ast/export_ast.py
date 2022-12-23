@@ -79,12 +79,12 @@ def _ast_to_dict(parsed_ast: str) -> str:
     parsed_ast = re.sub(r'=', r':', parsed_ast)
     parsed_ast = re.sub(r'\(', r'{', parsed_ast)
     parsed_ast = re.sub(r'\)', r'}', parsed_ast)
-    parsed_ast = re.sub(r'{}', r'()', parsed_ast)
+    parsed_ast = re.sub(r'{}', r'', parsed_ast)
     parsed_ast, strings = string_placeholders(parsed_ast)
     parsed_ast = re.sub('\'', '', parsed_ast)
     parsed_ast = re.sub(r'([\w.\(\)~]+)', r'"\1"', parsed_ast)
     parsed_ast = replace_strings(parsed_ast, strings)
-    parsed_ast = re.sub(r'"(\d+)"', r"\1", parsed_ast)
+    parsed_ast = re.sub(r'"([\d.]+)"', r"\1", parsed_ast)
     parsed_ast = re.sub(r'"{', r'":{', parsed_ast)
 
     return parsed_ast

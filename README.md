@@ -98,7 +98,7 @@ Module(
                     "func": {
                       "Name": {
                         "id": "print",
-                        "ctx": "Load()"
+                        "ctx": "Load"
                       }
                     },
                     "args": [
@@ -124,11 +124,11 @@ Module(
               "left": {
                 "Name": {
                   "id": "__name__",
-                  "ctx": "Load()"
+                  "ctx": "Load"
                 }
               },
               "ops": [
-                "Eq()"
+                "Eq"
               ],
               "comparators": [
                 {
@@ -147,7 +147,7 @@ Module(
                     "func": {
                       "Name": {
                         "id": "hello_world",
-                        "ctx": "Load()"
+                        "ctx": "Load"
                       }
                     },
                     "args": [],

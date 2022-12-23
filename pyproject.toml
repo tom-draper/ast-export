@@ -19,7 +19,7 @@ keywords = ["ast", "abstract syntax trees", "dict", "export", "json"]
 license = {file = "LICENSE"}
 readme = "README.md"
 requires-python = ">=3.7"
-version = "1.0.3"
+version = "1.0.5"
 
 [project.optional-dependencies]
 build = ["build", "twine"]
