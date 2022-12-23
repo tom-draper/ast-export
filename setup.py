@@ -4,7 +4,7 @@ long_description = open("README.md").read()
 
 setup(
     name="export-ast",
-    version="1.0.0",
+    version="1.0.1",
     author="Tom Draper",
     author_email="tomjdraper1@gmail.com",
     license="MIT",

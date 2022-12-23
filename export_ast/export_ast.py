@@ -104,5 +104,8 @@ def ast_to_dict(node_or_string) -> dict:
 
     node_or_string = _ast_to_dict(node_or_string)
 
-    d = json.loads(node_or_string)
+    try:
+        d = json.loads(node_or_string)
+    except json.decoder.JSONDecodeError:
+        raise ValueError('Input code invalid')
     return d
