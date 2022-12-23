@@ -4,34 +4,33 @@ import re
 
 
 def _enclosed_calls(parsed_ast: str) -> str:
-    """
-    Wraps ast function-type calls in braces.
-    FunctionCall(...) => {FunctionCall(...)}
-    Excludes leaf node calls  with no content (e.g. Load(), Store()).
-    Results in the creation of JSON object elements within lists.
+    """Wraps ast function-type calls in braces.
+       FunctionCall(...) => {FunctionCall(...)}
+       Excludes leaf node calls  with no content (e.g. Load(), Store()).
+       Results in the creation of JSON object elements within lists.
 
-    Input:
-        body=[
-            ImportFrom(
-                module='pprint',
-                names=[
-                    alias(name='pprint')],
-                    level=0),
-            Import(
-                names=[
-                    alias(name='ast')])
-        ]
-    Output:
-        body=[
-            {ImportFrom(
-                module='pprint',
-                names=[
-                    {alias(name='pprint')}],
-                level=0)},
-            {Import(
-                names=[
-                    {alias(name='ast')}])}
-        ]
+       Input:
+           body=[
+               ImportFrom(
+                   module='pprint',
+                   names=[
+                       alias(name='pprint')],
+                       level=0),
+               Import(
+                   names=[
+                       alias(name='ast')])
+           ]
+       Output:
+           body=[
+               {ImportFrom(
+                   module='pprint',
+                   names=[
+                       {alias(name='pprint')}],
+                   level=0)},
+               {Import(
+                   names=[
+                       {alias(name='ast')}])}
+           ]
     """
     while (match := re.search(r'[ =]\w+\([^\)]', parsed_ast)):
         start_idx = match.start(0)+1
@@ -57,9 +56,7 @@ def _enclosed_calls(parsed_ast: str) -> str:
 
 
 def string_placeholders(parsed_ast: str) -> tuple[str, list[str]]:
-    """
-    Replace multi-word strings with placeholders $str0$, $str1$, $str2$,...
-    """
+    """Replace multi-word strings with placeholders $str0$, $str1$, $str2$,..."""
     strings = []
     while (match := re.search(r'\'(.* .*)\'', parsed_ast)):
         parsed_ast = parsed_ast[:match.start(
@@ -70,9 +67,7 @@ def string_placeholders(parsed_ast: str) -> tuple[str, list[str]]:
 
 
 def replace_strings(parsed_ast: str, strings: list[str]) -> str:
-    """
-    Replace string placeholders with their original strings.
-    """
+    """Replace string placeholders with their original strings."""
     for i, string in enumerate(strings):
         parsed_ast = re.sub(f'~str{i}~', string, parsed_ast)
     return parsed_ast
@@ -96,9 +91,7 @@ def _ast_to_dict(parsed_ast: str) -> str:
 
 
 def ast_to_dict(node_or_string) -> dict:
-    """
-    Converts an AST in node or string format into a dictionary.
-    """
+    """Converts an AST in node or string format into a dictionary."""
     if type(node_or_string) != str:
         node_or_string = ast.dump(node_or_string, indent=1)
 
