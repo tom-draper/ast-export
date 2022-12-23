@@ -3,7 +3,7 @@ from setuptools import setup
 long_description = open("README.md").read()
 
 setup(
-    name="ast-export",
+    name="export-ast",
     version="1.0.0",
     author="Tom Draper",
     author_email="tomjdraper1@gmail.com",
@@ -14,6 +14,6 @@ setup(
     url="https://github.com/tom-draper/ast-export",
     key_words="ast syntax trees export dict json dictionary",
     install_requires=[],
-    packages=["api_analytics"],
+    packages=["export_ast"],
     python_requires=">=3.6",
 )

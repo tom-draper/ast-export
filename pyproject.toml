@@ -6,7 +6,7 @@ requires = [
 ]
 
 [project]
-name = "ast-export"
+name = "export-ast"
 authors = [{name = "Tom Draper", email = "tomjdraper1@gmail.com"}]
 classifiers = [
   "License :: OSI Approved :: MIT License",
@@ -26,4 +26,4 @@ build = ["build", "twine"]
 dev = ["pytest"]
 
 [project.urls]
-repository = "https://github.com/tom-draper/ast-export"
+repository = "https://github.com/tom-draper/export-ast"
