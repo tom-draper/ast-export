@@ -4,11 +4,16 @@ Export a Python abstract syntax tree to a dictionary/json.
 
 ## Usage
 
+```bash
+pip install ast-export
+```
+
 ```py
 import ast
 from ast_export import ast_to_dict
 
-tree = ast.parse("print('Hello World!')")
+code = "print('Hello World!')"
+tree = ast.parse(code)
 
 d = ast_to_dict(tree)
 
