@@ -22,12 +22,8 @@ d = ast_to_dict(tree_str)
 ### Python
 
 ```py
-from colorama import init, Fore
-
-init(wrap=False)
-
 def hello_world():
-    print(Fore.GREEN + 'Hello World!')
+    print('Hello World!')
 
 if __name__ == '__main__':
     hello_world()
@@ -36,22 +32,8 @@ if __name__ == '__main__':
 ### Abstract Syntax Tree
 
 ```py
-Module(t
+Module(
   body=[
-    ImportFrom(
-      module='colorama',
-      names=[
-        alias(name='init'),
-        alias(name='Fore')],
-      level=0),
-    Expr(
-      value=Call(
-        func=Name(id='init', ctx=Load()),
-        args=[],
-        keywords=[
-          keyword(
-            arg='wrap',
-            value=Constant(value=False))])),
     FunctionDef(
       name='hello_world',
       args=arguments(
@@ -65,13 +47,7 @@ Module(t
           value=Call(
             func=Name(id='print', ctx=Load()),
             args=[
-              BinOp(
-                left=Attribute(
-                  value=Name(id='Fore', ctx=Load()),
-                  attr='GREEN',
-                  ctx=Load()),
-                op=Add(),
-                right=Constant(value='Hello World!'))],
+              Constant(value='Hello World!')],
             keywords=[]))],
       decorator_list=[]),
     If(
@@ -91,72 +67,12 @@ Module(t
   type_ignores=[])
 ```
 
-### Exporting Dictionary
-
-```py
-import ast
-from pprint import pprint
-from ast_export import ast_to_dict
-
-with open('hello_world.py', 'r') as f:
-    tree = ast.parse(f.read())
-
-d = ast_to_dict(tree)
-
-pprint(d, indent=0)
-```
-
 ### Dictionary
 
 ```json
 {
   "Module": {
     "body": [
-      {
-        "ImportFrom": {
-          "module": "colorama",
-          "names": [
-            {
-              "alias": {
-                "name": "init"
-              }
-            },
-            {
-              "alias": {
-                "name": "Fore"
-              }
-            }
-          ],
-          "level": 0
-        }
-      },
-      {
-        "Expr": {
-          "value": {
-            "Call": {
-              "func": {
-                "Name": {
-                  "id": "init",
-                  "ctx": "Load()"
-                }
-              },
-              "args": [],
-              "keywords": [
-                {
-                  "keyword": {
-                    "arg": "wrap",
-                    "value": {
-                      "Constant": {
-                        "value": "False"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      },
       {
         "FunctionDef": {
           "name": "hello_world",
@@ -182,25 +98,8 @@ pprint(d, indent=0)
                     },
                     "args": [
                       {
-                        "BinOp": {
-                          "left": {
-                            "Attribute": {
-                              "value": {
-                                "Name": {
-                                  "id": "Fore",
-                                  "ctx": "Load()"
-                                }
-                              },
-                              "attr": "GREEN",
-                              "ctx": "Load()"
-                            }
-                          },
-                          "op": "Add()",
-                          "right": {
-                            "Constant": {
-                              "value": "Hello World!"
-                            }
-                          }
+                        "Constant": {
+                          "value": "Hello World!"
                         }
                       }
                     ],
@@ -223,7 +122,9 @@ pprint(d, indent=0)
                   "ctx": "Load()"
                 }
               },
-              "ops": ["Eq()"],
+              "ops": [
+                "Eq()"
+              ],
               "comparators": [
                 {
                   "Constant": {
