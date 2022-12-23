@@ -24,7 +24,7 @@ d = ast_to_dict(tree_str)
 
 ## Example
 
-### Python
+### Python Code
 
 ```py
 def hello_world():
