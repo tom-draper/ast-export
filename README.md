@@ -1,4 +1,4 @@
-# AST Export
+# Export AST
 
 Export a Python abstract syntax tree to a dictionary/json.
 
