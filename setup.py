@@ -1,10 +1,10 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 long_description = open("README.md").read()
 
 setup(
     name="export-ast",
-    version="1.0.1",
+    version="1.0.2",
     author="Tom Draper",
     author_email="tomjdraper1@gmail.com",
     license="MIT",
@@ -14,6 +14,6 @@ setup(
     url="https://github.com/tom-draper/ast-export",
     key_words="ast syntax trees export dict json dictionary",
     install_requires=[],
-    packages=["export_ast"],
+    packages=find_packages(),
     python_requires=">=3.6",
 )
